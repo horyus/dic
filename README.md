@@ -3,11 +3,9 @@
 # Requirements
 
 - `helm` & `kubectl`
-- Cluster on GKE, kubectl using this clster's context
+- Cluster on GKE, kubectl using this cluster's context
 - public global static ip not in use and called `noss-public`
-- public global static ip not in use and called `jira-public`
 - `nexus.horyus.com` points to `noss-public`
-- `jira.horyus.com` points to `jira-public`
 
 # Install
 
