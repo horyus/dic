@@ -1,0 +1,25 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+    name: "{{ .Release.Name }}-jira-ing"
+    annotations:
+        kubernetes.io/ingress.global-static-ip-name: {{ .Values.jira.ingress.static_ip_name }}
+    labels:
+        app: "{{ .Release.Name }}-jira"
+        chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+spec:
+    tls:
+        - hosts:
+              - {{ .Values.jira.ingress.host }}
+          secretName: "{{ .Release.Name }}-jira-cert-secret"
+    rules:
+        - host: {{ .Values.jira.ingress.host }}
+          http:
+              paths:
+                  - backend:
+                        serviceName: "{{ .Release.Name }}-jira-svc"
+                        servicePort: {{ .Values.jira.service.port }}
+                    path: /*

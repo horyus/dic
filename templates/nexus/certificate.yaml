@@ -1,0 +1,23 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+    name: "{{ .Release.Name }}-noss-cert"
+    namespace: default
+    labels:
+        app: "{{ .Release.Name }}-noss"
+        chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+spec:
+    secretName: "{{ .Release.Name }}-noss-cert-secret"
+    issuerRef:
+        name: "{{ .Release.Name }}-letsencrypt"
+        kind: Issuer
+    commonName: {{ .Values.noss.ingress.host }}
+    acme:
+        config:
+            - http01:
+                  ingress: "{{ .Release.Name }}-noss-ing"
+              domains:
+                  - {{ .Values.noss.ingress.host }}

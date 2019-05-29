@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "{{ .Release.Name }}-noss-svc"
+    labels:
+        app: "{{ .Release.Name }}-noss"
+        chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        release: "{{ .Release.Name }}"
+        heritage: "{{ .Release.Service }}"
+spec:
+    type: {{ .Values.noss.service.type }}
+    ports:
+        - port: {{ .Values.noss.service.port }}
+          targetPort: {{  .Values.noss.service.targetPort }}
+    selector:
+        app: noss

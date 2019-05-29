@@ -1,0 +1,42 @@
+jira:
+    image: cptactionhank/atlassian-jira:8.0.2
+    imagePullPolicy: IfNotPresent
+
+    service:
+        type: NodePort
+        port: 81
+
+    maxMemoryJVM: 2G
+    supportArgs:
+
+    ingress:
+        host: jira.horyus.com
+        static_ip_name: jira-public
+
+    resources:
+        requests:
+            memory: 2Gi
+            cpu: 1000m
+        limits:
+            memory: 2Gi
+            cpu: 2
+
+    persistence:
+        enabled: true
+        size: 20Gi
+        accessMode: ReadWriteOnce
+
+jira-pg:
+    imageTag: "9.5"
+    cpu: 100m
+    memory: 256Mi
+
+    postgresqlUsername: jira
+    postgresqlPassword: jira
+    postgresqlDatabase: jira
+
+    persistence:
+        enabled: true
+        size: 20Gi
+        accessMode: ReadWriteOnce
+
