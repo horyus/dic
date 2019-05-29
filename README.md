@@ -36,3 +36,9 @@ helm install . \
 ```
 
 Will start everything up. You can set the letsencrypt server to staging if needed
+
+## Travis
+
+| Var | Desc |
+| :---: | :---: |
+| 
