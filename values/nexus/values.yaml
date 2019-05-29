@@ -1,0 +1,19 @@
+noss:
+    nexusProxy:
+        enabled: false
+    service:
+        enabled: false
+        port: 80
+        targetPort: 8081
+        type: NodePort
+        readinessProbe:
+            initialDelaySeconds: 120
+            periodSeconds: 60
+            failureThreshold: 6
+        livenessProbe:
+            initialDelaySeconds: 120
+            periodSeconds: 60
+    ingress:
+        host: nexus.horyus.com
+        static_ip_name: noss-public
+

@@ -1,0 +1,9 @@
+dependencies:
+    - name: sonatype-nexus
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      version: 1.18.3
+      alias: noss
+    - name: postgresql
+      version: 5.1.0
+      repository: https://kubernetes-charts.storage.googleapis.com/
+      alias: jira-pg

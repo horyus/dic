@@ -1,0 +1,23 @@
+---
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+    name: "{{ .Release.Name }}-jira-cert"
+    namespace: default
+    labels:
+        app: {{ .Release.Name }}
+        chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+spec:
+    secretName: "{{ .Release.Name }}-jira-cert-secret"
+    issuerRef:
+        name: "{{ .Release.Name }}-letsencrypt"
+        kind: Issuer
+    commonName: {{ .Values.jira.ingress.host }}
+    acme:
+        config:
+            - http01:
+                  ingress: "{{ .Release.Name }}-jira-ing"
+              domains:
+                  - {{ .Values.jira.ingress.host }}
