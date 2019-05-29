@@ -14,6 +14,6 @@ noss:
             initialDelaySeconds: 120
             periodSeconds: 60
     ingress:
-        host: nexus.horyus.com
+        host: nexus.ticket721.com
         static_ip_name: noss-public
 
