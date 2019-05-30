@@ -7,6 +7,7 @@
 - public global static ip not in use and called `noss-public`
 - `nexus.ticket721.com` points to `noss-public`
 - Project, cluster & service key on gcloud (and API enabled)
+- Compute Engine Disk called jira-persistent on same region
 
 # Install
 

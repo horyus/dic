@@ -15,6 +15,13 @@ spec:
             labels:
                 app: "{{ .Release.Name }}-jira"
         spec:
+            initContainers:
+                - name: "{{ .Release.Name }}-jira-homeperms"
+                  image: busybox
+                  command: ["chmod", "-R", "777", "/var/atlassian"]
+                  volumeMounts:
+                      - name: "{{ .Release.Name }}-jira-pvc"
+                        mountPath: /var/atlassian
             containers:
                 - name: "{{ .Release.Name }}-jira"
                   image: {{ .Values.jira.image }}
@@ -47,7 +54,7 @@ spec:
                       periodSeconds: 60
                   volumeMounts:
                       - name: "{{ .Release.Name }}-jira-pvc"
-                        mountPath: /var/opt/jira
+                        mountPath: /var/atlassian
                   resources:
 {{ toYaml .Values.jira.resources | indent 18 }}
             volumes:
