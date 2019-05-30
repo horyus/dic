@@ -3,11 +3,10 @@
 # Requirements
 
 - `helm` & `kubectl`
-- Cluster on GKE, kubectl using this clster's context
+- Cluster on GKE, kubectl using this cluster's context
 - public global static ip not in use and called `noss-public`
-- public global static ip not in use and called `jira-public`
-- `nexus.horyus.com` points to `noss-public`
-- `jira.horyus.com` points to `jira-public`
+- `nexus.ticket721.com` points to `noss-public`
+- Project, cluster & service key on gcloud (and API enabled)
 
 # Install
 
@@ -38,3 +37,16 @@ helm install . \
 ```
 
 Will start everything up. You can set the letsencrypt server to staging if needed
+
+## Travis
+
+| Var | Desc |
+| :---: | :---: |
+| `CA_SERVER_URL` | URL of the CA server, ex: `https://acme-v02.api.letsencrypt.org/directory` |
+| `CLOUDSDK_CORE_DISABLE_PROMPTS` | Disables interactivity in the gcloud CLI |
+| `GOOGLE_CLUSTER_NAME` | Name of the cluster to operate |
+| `GOOGLE_COMPUTE_ZONE` | Name of the zone |
+| `GOOGLE_PROJECT_ID` | ID of the project containing the cluster |
+| `GOOGLE_SERVICE_KEY` | JSON Service key, with `'` around it |
+| `HELM_RELEASE_NAME` | Name of the current release |
+| `HELM_VERSION` | Version of the Helm CLI |

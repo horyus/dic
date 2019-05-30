@@ -6,11 +6,11 @@ jira:
         type: NodePort
         port: 81
 
-    maxMemoryJVM: 2G
+    maxMemoryJVM: 4G
     supportArgs:
 
     ingress:
-        host: jira.horyus.com
+        host: jira.ticket721.com
         static_ip_name: jira-public
 
     resources:
