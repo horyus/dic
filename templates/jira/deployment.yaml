@@ -20,18 +20,16 @@ spec:
                   image: {{ .Values.jira.image }}
                   imagePullPolicy: {{ .Values.jira.imagePullPolicy }}
                   env:
-                      - name: TOMCAT_PROXY_NAME
+                      - name: X_PROXY_NAME
                         value: {{ .Values.jira.ingress.host }}
-                      - name: TOMCAT_PROXY_PORT
+                      - name: X_PROXY_PORT
                         value: "443"
-                      - name: TOMCAT_PROXY_SCHEME
+                      - name: X_PROXY_SCHEME
                         value: https
                       - name: JVM_MEMORY_MAX
                         value: {{ .Values.jira.maxMemoryJVM }}
                       - name: JVM_SUPPORT_RECOMMENDED_ARGS
                         value: {{ .Values.jira.supportArgs }}
-                      - name: TOMCAT_PROXY_SECURE
-                        value: "true"
                   ports:
                     - name: jira
                       containerPort: 8080
