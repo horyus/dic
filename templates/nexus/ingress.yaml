@@ -5,6 +5,7 @@ metadata:
     name: "{{ .Release.Name }}-noss-ing"
     annotations:
         kubernetes.io/ingress.global-static-ip-name: {{ .Values.noss.ingress.static_ip_name }}
+        ingress.kubernetes.io/force-ssl-redirect: "true"
     labels:
         app: "{{ .Release.Name }}-noss"
         chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
