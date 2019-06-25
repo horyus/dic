@@ -33,7 +33,6 @@ This script loads the Custom Resource Definitions, and creates the cert manager 
 helm install . \
     -f ./values.yaml \
     -f ./values/nexus/values.yaml \
-    -f ./values/jira/values.yaml \
     --set letsencrypt.server=https://acme-v02.api.letsencrypt.org/directory
 ```
 

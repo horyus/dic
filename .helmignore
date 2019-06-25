@@ -22,4 +22,4 @@
 .vscode/
 rbac/
 templates/volume.yaml
-templates/jira/pv.yaml
+templates/jira/

@@ -2,8 +2,5 @@ dependencies:
 - name: sonatype-nexus
   repository: https://kubernetes-charts.storage.googleapis.com/
   version: 1.18.3
-- name: postgresql
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 5.1.0
-digest: sha256:2fcbcd45b306e6c209b453dd26882c5a789ac82e03ae0dc27628c7549b15b3a5
-generated: 2019-05-28T14:08:14.577028-04:00
+digest: sha256:18a54137357c17e5c796f36c55b3502bb32353ee060c2faf5b01dd83153a3854
+generated: 2019-06-25T19:07:08.690538+02:00
